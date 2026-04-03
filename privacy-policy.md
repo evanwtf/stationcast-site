@@ -38,6 +38,21 @@ Please read this Privacy Policy carefully. By downloading and using StationCast,
   
   These logs help us diagnose service issues and track API usage.
 
+### 1.4 Advertising Information (Current & Future)
+
+Currently, StationCast does not display advertisements. However, we may introduce advertising in the future. If we do:
+
+- **Ad Network Data**: We may partner with third-party ad networks (e.g., Google AdMob, Meta Audience Network) that collect:
+  - Device identifiers (e.g., IDFA)
+  - Approximate location (city/region level, not precise GPS)
+  - App usage patterns and engagement data
+  - Device information
+  
+- **Behavioral Targeting**: Ad networks may use this data to show you personalized ads based on your interests
+- **Ad Measurement**: We and our ad partners may track ad impressions, clicks, and conversions
+
+Any advertising implementation will be clearly disclosed in the App and in this Privacy Policy with full details about which ad networks are used.
+
 ## 2. How We Use Your Information
 
 We use the information we collect to:
@@ -46,13 +61,13 @@ We use the information we collect to:
 - **Improve the App**: Analyze crashes, errors, and usage patterns to improve stability and performance
 - **Personalization**: Apply your unit preferences and display settings
 - **Service Operation**: Manage our backend service, including caching and rate limiting
+- **Advertising** (if enabled): Serve ads through third-party ad networks and measure ad performance
 - **Compliance**: Fulfill legal obligations and respond to lawful requests
 
 We do **not** use your information for:
-- Marketing or promotional purposes
-- Selling or sharing your data with third parties for their commercial purposes
-- Creating profiles about you
-- Targeted advertising
+- Selling or sharing your station data or weather preferences with third parties for their commercial purposes
+- Creating detailed behavioral profiles about you independent of advertising
+- Cross-app tracking beyond what ad networks do for their own purposes
 
 ## 3. Third-Party Services
 
@@ -113,6 +128,19 @@ If you use the StationCast backend service, you can:
 - Rotate or revoke your API key through your account settings (when available)
 - Contact us (see Section 8) to request deletion of associated data
 
+### 6.4 Advertising Preferences
+
+If StationCast includes ads:
+
+- **Limit Ad Tracking**: On iOS, you can limit personalized ads by:
+  - Going to **Settings > Privacy > Apple Advertising** and enabling "Limit Ad Tracking"
+  - Going to **Settings > Apps > StationCast > App Tracking Transparency** and denying permission
+  
+- **Remove Ads**: Some future versions of StationCast may offer a premium ad-free subscription or one-time purchase to remove ads entirely
+- **Opt-Out of Behavioral Ads**: You can opt out of personalized advertising by adjusting your iOS privacy settings, though you may still see non-personalized ads
+
+Ad networks are required to honor these settings; however, we recommend reviewing the privacy policies of the specific ad networks in use for complete details on their practices.
+
 ## 7. Children's Privacy
 
 StationCast is not intended for children under 13 (or the applicable age of digital consent in your jurisdiction). We do not knowingly collect information from children under 13. If we become aware that a child under 13 has provided us with information, we will take steps to delete such information and terminate the child's account.
@@ -144,7 +172,9 @@ StationCast
 If you are a California resident, you have the right to:
 - Know what personal information is collected
 - Delete personal information (with certain exceptions)
-- Opt-out of the sale/sharing of personal information (we do not sell data)
+- Opt-out of the sale/sharing of personal information (we do not sell your station data; ad networks may use data for their own purposes)
+
+If StationCast includes ads, data shared with ad networks may be considered "sharing for cross-context behavioral advertising." You can limit this by disabling app tracking via iOS Settings.
 
 To exercise these rights, contact us at privacy@stationcast.app.
 
@@ -153,14 +183,16 @@ To exercise these rights, contact us at privacy@stationcast.app.
 If you are in the EU, your legal basis for processing includes:
 - **Legitimate Interests**: To operate the App and provide weather services
 - **Contract**: To provide the requested weather data fetching service
-- **Consent**: For location access (you control this via iOS permissions)
+- **Consent**: For location access (you control this via iOS permissions) and for personalized advertising (if implemented)
+
+If StationCast includes ads, we will obtain your explicit consent before sharing data with ad networks for personalized advertising. You may withdraw consent at any time via iOS Settings.
 
 You have the right to:
 - Access your information
 - Correct inaccurate data
 - Request deletion ("right to be forgotten")
 - Port your data
-- Object to processing
+- Object to processing and profiling for ads
 
 To exercise GDPR rights, contact us at privacy@stationcast.app.
 
