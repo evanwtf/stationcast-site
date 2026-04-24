@@ -32,7 +32,7 @@ The clock indicates that the station's last reading is getting old — roughly 1
 
 ## Where does the weather data come from?
 
-All data comes from personal weather stations (PWS) that upload to [Weather Underground](https://www.wunderground.com/). These are privately owned instruments — backyard sensors, rooftop stations, harbor monitors — operated by individuals and organizations. StationCast fetches their observations through the Weather Underground API.
+All data comes from personal weather stations — privately owned instruments operated by individuals and organizations. These are backyard sensors, rooftop stations, harbor monitors, and the like, with owners who opt in to sharing their readings publicly.
 
 ## What is a personal weather station?
 
