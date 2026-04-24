@@ -23,8 +23,8 @@ StationCast, you agree to the practices described in this policy.
 ### 1.1 Information You Provide Directly
 
 - **Station Configuration**: When you add personal weather stations to the
-  App, we store the station identifiers (e.g., Weather Underground station
-  IDs) and custom labels or names you assign.
+  App, we store the station identifiers and any custom labels or names you
+  assign.
 - **Account Information**: If applicable, API keys or authentication
   credentials you provide to access our backend service.
 - **Preferences**: Your choices regarding temperature units, wind speed units,
@@ -40,9 +40,8 @@ StationCast, you agree to the practices described in this policy.
   - Find nearby personal weather stations and sort them by proximity
   - Display distance information relative to your current location
 
-  Location data is **not sent to our servers** and is **not stored or
-  logged** by StationCast. It remains on your device and is used only for
-  local proximity calculations.
+  Location access is optional. If you decline, all app features remain
+  available except proximity-based station sorting and distance display.
 
 - **Timezone Detection**: We use your device's timezone setting to display
   station data with correct local times.
@@ -84,24 +83,13 @@ We do **not** use your information for:
 
 ## 3. Third-Party Services
 
-### 3.1 Weather Underground
+### 3.1 StationCast Backend Service
 
-StationCast fetches weather data from [Weather Underground](https://www.wunderground.com/)
-on your behalf. When you use the App:
-
-- Your **station IDs** are sent to Weather Underground's API
-- Weather Underground's privacy policy applies to their data collection:
-  https://www.wunderground.com/about/privacy
-
-We do not control Weather Underground's privacy practices.
-
-### 3.2 StationCast Backend Service
-
-If you configure the App to use the StationCast backend service (instead of
-direct Weather Underground API access):
+When the app fetches weather data:
 
 - Your **station IDs** are sent to our backend
-- Our backend caches observations server-side and returns normalized data
+- Our backend retrieves observations from upstream data providers, caches
+  them server-side, and returns normalized data to the app
 - The backend enforces API rate limits and authentication
 
 Backend request logs (station IDs, timestamps, errors) are retained for up to
