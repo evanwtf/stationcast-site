@@ -36,7 +36,7 @@ All data comes from personal weather stations — privately owned instruments op
 
 ## What is a personal weather station?
 
-A personal weather station is a privately owned set of weather instruments — typically a combined sensor for temperature, humidity, wind, rain, pressure, and sometimes UV and solar radiation. Owners install them at their homes, farms, boats, and other locations and opt in to sharing readings publicly. Because they are locally sited, they often give a more accurate picture of conditions at a specific place than the nearest official airport or government sensor.
+A personal weather station is a privately owned set of weather instruments — typically a combined sensor for temperature, humidity, wind, rain, pressure, and sometimes UV and solar radiation. Owners install them at their homes, farms, boats, and other locations and opt in to sharing readings publicly. Because they are locally sited, they often give a more accurate picture of conditions at a specific place than the nearest official airport or government sensor. [Here's an example of one.](https://amzn.to/41TabvG)
 
 ## Is this a forecast app?
 
