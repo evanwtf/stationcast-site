@@ -43,11 +43,7 @@ Includes the direction, and adds a gust clause when gusts exceed the sustained s
 
 ## Humidity
 
-- "Hey Siri, how humid is it in StationCast?"
-- "Hey Siri, what's the humidity in StationCast?"
-- "Hey Siri, what's the dew point in StationCast?"
-
-Reports the relative humidity together with the dew point.
+Wire this one up yourself from the Shortcuts app — the **Get Humidity** action is registered, but the spoken phrase isn't pre-bound to keep the suggestion list within Apple's recommended size. The full weather summary always reports humidity and dew point.
 
 ## Pressure
 
@@ -70,13 +66,35 @@ Speaks the index plus a risk word (low, moderate, high, very high, extreme). At 
 - "Hey Siri, when does the sun come up in StationCast?"
 - "Hey Siri, when is sunrise in StationCast?"
 
+Always answers about the **next** sunrise, dated — for example, *"Sunrise at Home on May 16 is at 5:42 AM."* If today's sunrise has already happened, you'll get tomorrow's instead.
+
+To ask about the most recent sunrise:
+
+- "Hey Siri, when was sunrise in StationCast?"
+- "Hey Siri, what time was sunrise in StationCast?"
+- "Hey Siri, when did the sun come up in StationCast?"
+
+Answers with a "today" or "yesterday" qualifier — *"Sunrise at Home today was at 5:42 AM."*
+
 ## Sunset
 
 - "Hey Siri, what time is sunset in StationCast?"
 - "Hey Siri, how long until sunset in StationCast?"
 - "Hey Siri, when does the sun set in StationCast?"
 
-The sunrise and sunset commands switch phrasing based on proximity: when the next event is within a few hours, you'll hear both a duration and a clock time ("Sunrise at Home is in 2 hours and 15 minutes, at 5:42 AM"). If it's further off, you'll just hear the clock time. If sunrise or sunset happened in the last hour, you'll hear how long ago it was instead.
+Always answers about the **next** sunset, dated — for example, *"Sunset at Home on May 16 is at 8:00 PM."* If today's sunset has already happened, you'll get tomorrow's instead.
+
+To ask about the most recent sunset:
+
+- "Hey Siri, when was sunset in StationCast?"
+- "Hey Siri, what time was sunset in StationCast?"
+- "Hey Siri, when did the sun go down in StationCast?"
+
+Answers with a "today" or "yesterday" qualifier — *"Sunset at Home today was at 8:00 PM."*
+
+## How fresh is the reading?
+
+Every metric reply (temperature, rain, wind, humidity, pressure, UV) carries an *"as of N ago"* clause when the reading isn't brand-new — for example, *"Temperature at Home is 62 degrees Fahrenheit, partly cloudy, as of 32 minutes ago."* If the observation is less than a minute old, the clause is omitted so the answer stays terse. Sunrise and sunset are computed from solar geometry, so they don't carry a freshness clause.
 
 ## Tips
 
