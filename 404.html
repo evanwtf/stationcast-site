@@ -1,0 +1,250 @@
+---
+layout: null
+permalink: /404.html
+sitemap: false
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StationCast</title>
+  <meta name="description" content="Open a personal weather station in StationCast.">
+  <meta name="robots" content="noindex">
+
+  <!-- OpenGraph -->
+  <meta property="og:type"        content="website">
+  <meta property="og:site_name"   content="StationCast">
+  <meta property="og:title"       content="StationCast — Personal Weather Station App">
+  <meta property="og:description" content="Real readings from the station near you. Not a forecast, not a blend. Weather that feels like a place.">
+  <meta property="og:image"       content="https://stationcast.app/assets/og-image.png">
+  <meta property="og:image:width"  content="1200">
+  <meta property="og:image:height" content="630">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --glass-bg: rgba(255, 255, 255, 0.10);
+      --glass-border: rgba(255, 255, 255, 0.22);
+      --glass-inset: rgba(255, 255, 255, 0.18);
+      --text-primary: #ffffff;
+      --text-secondary: rgba(255, 255, 255, 0.72);
+      --text-tertiary: rgba(255, 255, 255, 0.45);
+    }
+
+    html { -webkit-text-size-adjust: 100%; }
+
+    body {
+      min-height: 100vh;
+      background: linear-gradient(165deg, #152d4a 0%, #1c5280 42%, #3a80b8 80%, #5499cc 100%);
+      background-attachment: fixed;
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", sans-serif;
+      color: var(--text-primary);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      top: -15%;
+      right: -5%;
+      width: 55vw;
+      height: 55vw;
+      max-width: 500px;
+      max-height: 500px;
+      background: radial-gradient(circle, rgba(120, 190, 255, 0.18) 0%, transparent 65%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .container {
+      max-width: 560px;
+      margin: 0 auto;
+      padding: 0 20px 60px;
+      position: relative;
+      z-index: 1;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 26px 0 28px;
+    }
+
+    .wordmark {
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: -0.3px;
+      color: white;
+      text-decoration: none;
+    }
+
+    nav a {
+      font-size: 13px;
+      color: var(--text-secondary);
+      text-decoration: none;
+    }
+    nav a:hover { color: white; }
+
+    .content-card {
+      background: var(--glass-bg);
+      backdrop-filter: blur(28px) saturate(160%);
+      -webkit-backdrop-filter: blur(28px) saturate(160%);
+      border: 1px solid var(--glass-border);
+      border-radius: 22px;
+      box-shadow:
+        0 8px 32px rgba(0, 0, 0, 0.22),
+        inset 0 1px 0 var(--glass-inset);
+      padding: 40px 36px;
+      text-align: center;
+    }
+
+    @media (max-width: 560px) {
+      .content-card { padding: 28px 22px; }
+    }
+
+    .eyebrow {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      color: var(--text-tertiary);
+      margin-bottom: 12px;
+    }
+
+    h1 {
+      font-size: 26px;
+      font-weight: 700;
+      letter-spacing: -0.4px;
+      margin-bottom: 10px;
+      color: white;
+    }
+
+    .station-id {
+      display: inline-block;
+      font-family: "SF Mono", "Monaco", "Courier New", monospace;
+      font-size: 13px;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 5px;
+      padding: 4px 10px;
+      color: white;
+      margin-bottom: 20px;
+    }
+
+    p {
+      font-size: 15px;
+      line-height: 1.6;
+      color: var(--text-secondary);
+      margin-bottom: 18px;
+    }
+
+    .cta {
+      display: inline-block;
+      margin-top: 8px;
+      padding: 13px 26px;
+      background: rgba(255, 255, 255, 0.18);
+      border: 1px solid rgba(255, 255, 255, 0.30);
+      border-radius: 12px;
+      color: white;
+      font-size: 15px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background 0.15s ease;
+    }
+    .cta:hover {
+      background: rgba(255, 255, 255, 0.26);
+    }
+
+    .secondary-cta {
+      display: block;
+      margin-top: 18px;
+      font-size: 13px;
+      color: var(--text-secondary);
+      text-decoration: none;
+    }
+    .secondary-cta:hover { color: white; }
+
+    footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 0 0;
+      margin-top: 24px;
+    }
+
+    footer a {
+      font-size: 13px;
+      color: var(--text-secondary);
+      text-decoration: none;
+    }
+    footer a:hover { color: white; }
+
+    .footer-copy {
+      font-size: 12px;
+      color: var(--text-tertiary);
+    }
+
+    #station-view { display: none; }
+    #not-found { display: none; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <nav>
+      <a href="/" class="wordmark">StationCast</a>
+      <a href="/">← Home</a>
+    </nav>
+
+    <div class="content-card">
+      <div id="station-view">
+        <div class="eyebrow">Personal weather station</div>
+        <h1>Open this station in StationCast</h1>
+        <div class="station-id" id="station-id-chip"></div>
+        <p>StationCast turns personal weather stations into a glanceable, place-first experience for iPhone. Install the beta to view live readings from this station.</p>
+        <a class="cta" href="https://testflight.apple.com/join/GgARMSyP">Get StationCast on TestFlight</a>
+        <a class="secondary-cta" href="/">Learn more about StationCast →</a>
+      </div>
+
+      <div id="not-found">
+        <div class="eyebrow">404</div>
+        <h1>Page not found</h1>
+        <p>The page you're looking for isn't here.</p>
+        <a class="cta" href="/">Back to StationCast</a>
+      </div>
+    </div>
+
+    <footer>
+      <div style="display:flex;gap:20px;">
+        <a href="/faq">FAQ</a>
+        <a href="/release-notes">Release Notes</a>
+        <a href="/privacy-policy">Privacy Policy</a>
+      </div>
+      <span class="footer-copy">&copy; 2026 StationCast</span>
+    </footer>
+  </div>
+
+  <script>
+    (function () {
+      var path = window.location.pathname || "";
+      var match = path.match(/^\/station\/([^\/?#]+)/);
+      if (match && match[1]) {
+        var rawID = decodeURIComponent(match[1]);
+        // Only render IDs that look like Weather Underground station IDs:
+        // alphanumeric, dash, underscore. Anything else falls through to 404.
+        if (/^[A-Za-z0-9_-]{1,32}$/.test(rawID)) {
+          document.getElementById("station-id-chip").textContent = rawID;
+          document.title = rawID + " — StationCast";
+          document.getElementById("station-view").style.display = "block";
+          return;
+        }
+      }
+      document.getElementById("not-found").style.display = "block";
+    })();
+  </script>
+</body>
+</html>
