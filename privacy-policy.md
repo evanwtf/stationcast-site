@@ -14,6 +14,14 @@ StationCast ("we," "us," "our," or "the App") is a personal weather station comp
 
 By using StationCast, you agree to the practices described here.
 
+## Intended audience and GDPR notice
+
+StationCast is intended for users in the United States. The service is **not directed at users in the European Union, the United Kingdom, or other jurisdictions with comparable data-protection regimes** (including but not limited to the EU GDPR and the UK GDPR).
+
+**StationCast is not GDPR-compliant or UK-GDPR-compliant.** We have not built the processes, documentation, controls, or compliance infrastructure required by those regimes, and we will not honor data-subject access, deletion, portability, restriction, objection, or transfer requests made under those regimes. We have no Data Protection Officer, no EU representative, no international-transfer safeguards, and no automated retention or deletion processes.
+
+**If you are a resident of the EU, the UK, or any other jurisdiction with a comparable data-protection regime, please do not use StationCast.** We do not technically block access. If you choose to use the app despite this notice, you acknowledge that the app is not GDPR / UK GDPR compliant, that we will not accommodate GDPR / UK GDPR rights or obligations on your behalf, and that you use the app on that basis.
+
 ## 1. Information we handle
 
 ### 1.1 Information you provide
@@ -130,7 +138,7 @@ If you want the App Attest device record we hold for your installation removed f
 
 ## 8. Children's privacy
 
-StationCast is not intended for children. We do not knowingly collect information from children under 13 (under 16 in the European Union, or the relevant age threshold in your jurisdiction). If we become aware that a child has provided us with information, we will remove it.
+StationCast is not intended for children under 13. We do not knowingly collect information from children under 13. If we become aware that a child under 13 has provided us with information, we will remove it.
 
 ## 9. Changes to this Privacy Policy
 
@@ -142,9 +150,7 @@ We may update this policy from time to time. Material changes are signaled by up
 
 We respond to privacy inquiries as quickly as practical.
 
-## 11. Additional information by jurisdiction
-
-### 11.1 United States (CCPA / CPRA)
+## 11. California residents (CCPA / CPRA)
 
 If you are a California resident, you have the right to:
 
@@ -155,16 +161,6 @@ If you are a California resident, you have the right to:
 We do not sell your personal information and we do not share it for cross-context behavioral advertising.
 
 To exercise these rights, contact us at evandhoffman@gmail.com.
-
-### 11.2 European Union & United Kingdom (GDPR / UK GDPR)
-
-If you are in the EU or UK, our legal bases for processing include:
-
-- **Performance of a contract**: providing the weather data fetching service you've requested.
-- **Legitimate interests**: operating the backend, preventing abuse via App Attest, and diagnosing service problems.
-- **Consent**: location access, photo library access, and enabling the Alexa skill (each controlled at the OS or platform level, and revocable).
-
-You have the right to access, correct, delete, port, or restrict processing of your data, and to object to processing based on legitimate interests. To exercise these rights, contact us at evandhoffman@gmail.com.
 
 ---
 
