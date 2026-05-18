@@ -82,9 +82,9 @@ We do **not** use the information to:
 
 The iOS app does not talk to weather data providers directly. Every request — saved-station observations, nearby search, station discovery, the Alexa skill — goes to our backend, which then mediates with the appropriate upstream. Our backend handles caching, rate limiting, plausibility checks on sensor data, and authentication.
 
-### 3.2 Weather Underground
+### 3.2 Third-party data provider
 
-The current upstream personal-weather-station provider is Weather Underground. When you view a station, our backend may call Weather Underground on your behalf to retrieve current and recent observations for that station identifier. Weather Underground sees the station identifier and our backend's IP, not your device's IP or any identifier specific to you. We cache observations server-side to reduce the number of upstream calls.
+The iOS app does not talk to weather data providers directly. Our backend mediates with a third-party personal-weather-station data provider on your behalf. When you view a station, our backend may call that provider to retrieve current and recent observations for the station identifier you requested. The provider sees the station identifier and our backend's IP, not your device's IP or any identifier specific to you. We cache observations server-side to reduce the number of upstream calls.
 
 ### 3.3 Apple App Attest
 
