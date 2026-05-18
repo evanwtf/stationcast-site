@@ -9,6 +9,9 @@ permalink: /:title
 plugins:
   - jekyll-feed
 
+include:
+  - .well-known
+
 exclude:
   - .gitignore
   - README.md

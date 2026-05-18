@@ -1,0 +1,15 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": ["94S5PZTVPY.com.evanhoffman.StationCast"],
+        "components": [
+          {
+            "/": "/station/*",
+            "comment": "Opens a station's detail page in the StationCast app."
+          }
+        ]
+      }
+    ]
+  }
+}
