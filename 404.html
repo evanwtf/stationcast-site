@@ -234,7 +234,7 @@ sitemap: false
       var match = path.match(/^\/station\/([^\/?#]+)/);
       if (match && match[1]) {
         var rawID = decodeURIComponent(match[1]);
-        // Only render IDs that look like Weather Underground station IDs:
+        // Only render IDs that look like personal weather station IDs:
         // alphanumeric, dash, underscore. Anything else falls through to 404.
         if (/^[A-Za-z0-9_-]{1,32}$/.test(rawID)) {
           document.getElementById("station-id-chip").textContent = rawID;
