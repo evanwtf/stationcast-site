@@ -70,7 +70,7 @@ description: Link your personal weather station to the StationCast Alexa skill.
   var submitBtn = document.getElementById('submit-btn');
 
   form.addEventListener('submit', function () {
-    var stationId = document.getElementById('station-id').value.trim();
+    var stationId = document.getElementById('station-id').value.trim().toUpperCase();
     if (!stationId) return;
 
     var nickname = document.getElementById('nickname').value.trim() || null;
