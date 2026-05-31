@@ -1,0 +1,110 @@
+---
+layout: default
+title: Link a Station
+permalink: /alexa/link
+description: Link your personal weather station to the StationCast Alexa skill.
+---
+
+<h1>Link a Station</h1>
+<p class="page-meta">Connect a personal weather station to StationCast on Alexa</p>
+
+<div id="form-section">
+  <p>Enter your weather station ID to link it to your Alexa account. You can
+  find your station ID in the StationCast app under Settings → Manage Stations,
+  or on your Weather Underground dashboard.</p>
+
+  <form id="link-form" onsubmit="return false;" style="margin-top: 24px;">
+    <div style="margin-bottom: 16px;">
+      <label for="station-id" style="display:block; font-size:13px; font-weight:600; color:var(--text-secondary); margin-bottom:6px; text-transform:uppercase; letter-spacing:0.5px;">Station ID</label>
+      <input type="text" id="station-id" required placeholder="e.g. KNYWANTA123"
+        style="width:100%; padding:12px 14px; border-radius:10px; border:1px solid var(--glass-border); background:rgba(255,255,255,0.08); color:white; font-size:16px; font-family:inherit; outline:none;"
+        onfocus="this.style.borderColor='rgba(160,210,255,0.6)'"
+        onblur="this.style.borderColor='var(--glass-border)'">
+    </div>
+
+    <div style="margin-bottom: 24px;">
+      <label for="nickname" style="display:block; font-size:13px; font-weight:600; color:var(--text-secondary); margin-bottom:6px; text-transform:uppercase; letter-spacing:0.5px;">Nickname <span style="font-weight:400; text-transform:none;">(optional)</span></label>
+      <input type="text" id="nickname" placeholder='e.g. "Home" or "Work"'
+        style="width:100%; padding:12px 14px; border-radius:10px; border:1px solid var(--glass-border); background:rgba(255,255,255,0.08); color:white; font-size:16px; font-family:inherit; outline:none;"
+        onfocus="this.style.borderColor='rgba(160,210,255,0.6)'"
+        onblur="this.style.borderColor='var(--glass-border)'">
+      <p style="font-size:13px; color:var(--text-tertiary); margin-top:6px;">
+        If set, you can say "Alexa, ask StationCast for the weather at Home."
+      </p>
+    </div>
+
+    <button type="submit" id="submit-btn"
+      style="width:100%; padding:14px; border-radius:12px; border:none; background:rgba(160,210,255,0.25); color:white; font-size:16px; font-weight:600; font-family:inherit; cursor:pointer; transition:background 0.2s;"
+      onmouseover="this.style.background='rgba(160,210,255,0.4)'"
+      onmouseout="this.style.background='rgba(160,210,255,0.25)'">
+      Link Station
+    </button>
+  </form>
+</div>
+
+<div id="error-section" style="display:none; margin-top:24px;">
+  <p style="color:#ff9494;" id="error-message"></p>
+  <p style="margin-top:12px;">
+    <a href="#" onclick="location.reload(); return false;">Try again</a>
+  </p>
+</div>
+
+<div id="missing-token-section" style="display:none;">
+  <p>This page is part of the Alexa account-linking flow. To link a station,
+  open the Alexa app, find the StationCast skill, and tap
+  <strong>Link Account</strong>.</p>
+</div>
+
+<script>
+(function () {
+  var params = new URLSearchParams(window.location.search);
+  var continuationToken = params.get('continuation_token');
+
+  if (!continuationToken) {
+    document.getElementById('form-section').style.display = 'none';
+    document.getElementById('missing-token-section').style.display = 'block';
+    return;
+  }
+
+  var form = document.getElementById('link-form');
+  var submitBtn = document.getElementById('submit-btn');
+
+  form.addEventListener('submit', function () {
+    var stationId = document.getElementById('station-id').value.trim();
+    if (!stationId) return;
+
+    var nickname = document.getElementById('nickname').value.trim() || null;
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Linking…';
+    submitBtn.style.opacity = '0.6';
+
+    fetch('https://api.stationcast.app/v1/alexa/authorize/complete', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        continuationToken: continuationToken,
+        stationId: stationId,
+        nickname: nickname,
+        isDefault: true
+      })
+    })
+    .then(function (res) {
+      if (!res.ok) throw new Error('Linking failed (status ' + res.status + ')');
+      return res.json();
+    })
+    .then(function (data) {
+      if (data.redirectUrl) {
+        window.location.href = data.redirectUrl;
+      } else {
+        throw new Error('Unexpected response from server');
+      }
+    })
+    .catch(function (err) {
+      document.getElementById('form-section').style.display = 'none';
+      document.getElementById('error-section').style.display = 'block';
+      document.getElementById('error-message').textContent = err.message;
+    });
+  });
+})();
+</script>
