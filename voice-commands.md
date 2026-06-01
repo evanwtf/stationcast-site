@@ -2,10 +2,60 @@
 layout: default
 title: Voice Commands
 permalink: /voice-commands
-description: Siri phrases StationCast supports — temperature, rain, wind, humidity, pressure, UV, sunrise, sunset, and a full weather summary.
+description: Voice commands StationCast supports on Siri and Alexa — temperature, rain, wind, humidity, pressure, UV, sunrise, sunset, and a full weather summary.
 ---
 
 # Voice Commands
+
+StationCast supports voice commands on **Siri** (iOS) and **Amazon Alexa**. Both assistants read observed data from your personal weather stations — never forecast or blended sources.
+
+---
+
+## Alexa
+
+<p class="page-meta">Ask Alexa about your linked stations on any Echo or Alexa-enabled device</p>
+
+The StationCast Alexa skill reads a spoken weather report from your linked personal weather station. Link your station through the Alexa app's account-linking flow, then use any of the phrases below.
+
+By default each command answers about the station you've set as your **default**. You can also ask about a specific station by name if you've given it a nickname during setup.
+
+### Weather report
+
+- "Alexa, ask StationCast for the weather."
+- "Alexa, ask StationCast for a weather report."
+- "Alexa, ask StationCast for the conditions."
+
+Speaks a summary: current temperature and conditions, wind (with gusts), dew point and humidity, today's rainfall, pressure trend, the next sunrise or sunset, and the daily high and low so far.
+
+### Detailed weather report
+
+- "Alexa, ask StationCast for the detailed weather."
+- "Alexa, ask StationCast for a detailed report."
+- "Alexa, ask StationCast for the full report."
+
+A longer report with all available metrics.
+
+### Asking about a specific station
+
+If you've linked multiple stations and given them nicknames, you can ask about one by name:
+
+- "Alexa, ask StationCast for the weather at Home."
+- "Alexa, ask StationCast for the weather at Beach House."
+- "Alexa, ask StationCast for the full report for Cabin."
+
+When the name doesn't match any of your nicknames, StationCast falls back to your default station and tells you which one it's reading.
+
+### Setup
+
+1. Open the Alexa app and search for "StationCast" in Skills & Games.
+2. Tap **Enable to Use**, then **Link Account** to sign in and choose your station.
+3. Once linked, say "Alexa, ask StationCast for the weather" to try it out.
+
+To manage your linked stations later, go to the StationCast skill in the Alexa app and tap **Manage Account Linking**.
+
+---
+
+## Siri
 
 <p class="page-meta">Ask Siri about your saved stations on iOS</p>
 
@@ -13,19 +63,19 @@ StationCast registers Siri shortcuts for each metric your saved stations report.
 
 By default each command answers about the station you've labeled **Home**. If no station is labeled Home, StationCast falls back to the first station in your saved list. You can also wire a specific station into a Shortcut from the iOS Shortcuts app.
 
-## Full weather report
+### Full weather report
 
 - "Hey Siri, what's the weather in StationCast?"
 - "Hey Siri, give me a weather report from StationCast."
 
 Speaks a multi-sentence summary: current temperature and conditions, wind (with gusts), dew point and humidity, today's rainfall, pressure trend, the next sunrise or sunset, and the daily high and low so far.
 
-## Temperature
+### Temperature
 
 - "Hey Siri, what's the temperature in StationCast?"
 - "Hey Siri, check the temperature in StationCast."
 
-## Is it raining?
+### Is it raining?
 
 - "Hey Siri, is it raining in StationCast?"
 - "Hey Siri, how much rain has there been in StationCast?"
@@ -33,7 +83,7 @@ Speaks a multi-sentence summary: current temperature and conditions, wind (with 
 
 Reports the current rate when it's raining ("raining at Home at 0.12 inches per hour") and otherwise frames the answer around the daily total ("not raining at Home right now — 0.31 inches today").
 
-## Wind
+### Wind
 
 - "Hey Siri, how windy is it in StationCast?"
 - "Hey Siri, what's the wind in StationCast?"
@@ -41,11 +91,11 @@ Reports the current rate when it's raining ("raining at Home at 0.12 inches per 
 
 Includes the direction, and adds a gust clause when gusts exceed the sustained speed.
 
-## Humidity
+### Humidity
 
 Wire this one up yourself from the Shortcuts app — the **Get Humidity** action is registered, but the spoken phrase isn't pre-bound to keep the suggestion list within Apple's recommended size. The full weather summary always reports humidity and dew point.
 
-## Pressure
+### Pressure
 
 - "Hey Siri, what's the pressure in StationCast?"
 - "Hey Siri, is the pressure rising in StationCast?"
@@ -53,14 +103,14 @@ Wire this one up yourself from the Shortcuts app — the **Get Humidity** action
 
 Reports the current pressure and whether it's rising, falling, or steady.
 
-## UV index
+### UV index
 
 - "Hey Siri, what's the UV index in StationCast?"
 - "Hey Siri, check the UV in StationCast."
 
 Speaks the index plus a risk word (low, moderate, high, very high, extreme). At night, or when the station doesn't report UV, the command declines rather than reading a misleading value.
 
-## Sunrise
+### Sunrise
 
 - "Hey Siri, what time is sunrise in StationCast?"
 - "Hey Siri, when does the sun come up in StationCast?"
@@ -76,7 +126,7 @@ To ask about the most recent sunrise:
 
 Answers with a "today" or "yesterday" qualifier — *"Sunrise at Home today was at 5:42 AM."*
 
-## Sunset
+### Sunset
 
 - "Hey Siri, what time is sunset in StationCast?"
 - "Hey Siri, how long until sunset in StationCast?"
@@ -92,11 +142,11 @@ To ask about the most recent sunset:
 
 Answers with a "today" or "yesterday" qualifier — *"Sunset at Home today was at 8:00 PM."*
 
-## How fresh is the reading?
+### How fresh is the reading?
 
 Every metric reply (temperature, rain, wind, humidity, pressure, UV) carries an *"as of N ago"* clause when the reading isn't brand-new — for example, *"Temperature at Home is 62 degrees Fahrenheit, partly cloudy, as of 32 minutes ago."* If the observation is less than a minute old, the clause is omitted so the answer stays terse. Sunrise and sunset are computed from solar geometry, so they don't carry a freshness clause.
 
-## Tips
+### Tips
 
 - The first time you use a phrase, iOS may ask you to confirm StationCast can handle it. Tap **Allow**.
 - You can drop the "Hey Siri" if your phone is unlocked and you're holding the side button.
