@@ -6,11 +6,11 @@ permalink: /privacy-policy.html
 
 # Privacy Policy
 
-<p class="page-meta">Last Updated: May 18, 2026</p>
+<p class="page-meta">Last Updated: May 31, 2026</p>
 
 ## Introduction
 
-StationCast ("we," "us," "our," or "the App") is a personal weather station companion. This Privacy Policy explains what information we handle when you use the StationCast iOS app, the iOS widget extension, and the StationCast backend service that the app talks to. It also covers the optional Amazon Alexa skill, when you choose to enable it.
+StationCast ("we," "us," "our," or "the App") is a personal weather station companion. This Privacy Policy explains what information we handle when you use the StationCast iOS app, the iOS widget extension, the StationCast Android app, and the StationCast backend service that the apps talk to. It also covers the optional Amazon Alexa skill, when you choose to enable it.
 
 By using StationCast, you agree to the practices described here.
 
@@ -27,13 +27,14 @@ StationCast is intended for users in the United States. The service is **not dir
 ### 1.1 Information you provide
 
 - **Personal weather station configuration.** When you save a station, we store its station identifier and any custom label you assign (for example, "Home," "Mom's," "Beach"). Custom labels are short freeform strings you choose; we do not derive meaning from them.
-- **Preferences.** Your display choices — temperature, wind speed, pressure, and distance units; map label configuration; initial map radius; launch behavior; share-image QR code on/off; sparkline visibility; iPad sidebar default; and similar settings.
+- **Preferences.** Your display choices — temperature, wind speed, pressure, rainfall, and distance units; map label configuration; initial map radius; launch behavior; share-image QR code on/off; sparkline visibility; iPad sidebar default; and similar settings.
+- **Siri and Shortcuts (iOS only, optional).** If you use Siri voice commands or Apple Shortcuts to ask about weather at your saved stations, the app processes your request using the same observation cache that powers the widget — no additional network call is made. Apple's handling of your voice data is governed by Apple's privacy policy; we never receive raw audio. You can revoke Siri access at any time in iOS Settings → StationCast → Siri & Search.
 - **Photos library, only when you ask.** If you tap "Save to Photos" on a share image, iOS prompts you for permission to add an image to your library. We never read your photo library.
 - **Amazon Alexa account linking (optional).** If you choose to enable the StationCast Alexa skill, the standard OAuth 2.0 account-linking flow runs against our backend. We store the link between your Amazon-side identifier and which StationCast station(s) you've linked to it, plus any nickname you assigned and which one (if any) is your default. We hash the Amazon-supplied user identifier before logging it so it does not appear in plain text in our logs. You can unlink the skill at any time from the Alexa app; see [Section 7](#7-your-privacy-rights--choices) for what happens to the server-side record.
 
 ### 1.2 Location, only with your permission
 
-The app requests your device's location (when-in-use) for these purposes:
+The app requests your device's location (when-in-use on iOS; fine/coarse on Android) for these purposes:
 
 - **Discovery**: finding personal weather stations near you and sorting them by distance.
 - **Distance display**: showing how far each saved station is from your current location.
@@ -47,17 +48,17 @@ Location access is optional. If you decline, every feature still works except th
 
 When the app talks to our backend, the backend records server-side log lines containing:
 
-- HTTP method, path, response status, and request duration.
+- HTTP method, path, URL query string, response status, and request duration.
 - Your IP address (the immediate peer IP, plus the forwarded chain if you reach us through a proxy or VPN).
-- The User-Agent string sent by iOS.
-- The StationCast app version, build number, commit short hash, platform (`ios`), and device class (for example, `phone`, `pad`).
+- The User-Agent string sent by the app.
+- The StationCast app version, build number, commit short hash, platform (`ios` or `android`), and device class (for example, `phone`, `pad`, `tablet`).
 - A masked identifier for the credential the request was authenticated with (a prefix of the API key hash, or the App Attest key identifier — never the secret itself).
 - Whether App Attest verification passed.
 - The station identifier(s) the request asked about, when the request is for station data.
 
 These logs help us diagnose service problems, detect abuse, and understand which app versions are in the field. We do not build behavioral profiles of individual users from them.
 
-The app does **not** ship a third-party crash reporter or analytics SDK. We do not run Sentry, Firebase, Crashlytics, MetricKit, or comparable telemetry. Apple-platform crash reports may be available to us through App Store Connect if you have opted into "Share With App Developers" in your iOS settings, but that is an Apple-controlled feature; we never collect or transmit crash data ourselves.
+Neither the iOS nor the Android app ships a third-party crash reporter or analytics SDK. We do not run Sentry, Firebase, Crashlytics, MetricKit, or comparable telemetry. Apple-platform crash reports may be available to us through App Store Connect if you have opted into "Share With App Developers" in your iOS settings, and Android vitals may be visible through Google Play Console if you have opted in; both are platform-controlled features. We never collect or transmit crash data ourselves.
 
 ## 2. How we use the information
 
@@ -80,17 +81,21 @@ We do **not** use the information to:
 
 ### 3.1 StationCast backend service
 
-The iOS app does not talk to weather data providers directly. Every request — saved-station observations, nearby search, station discovery, the Alexa skill — goes to our backend, which then mediates with the appropriate upstream. Our backend handles caching, rate limiting, plausibility checks on sensor data, and authentication.
+Neither the iOS nor the Android app talks to weather data providers directly. Every request — saved-station observations, nearby search, station discovery, the Alexa skill — goes to our backend, which then mediates with the appropriate upstream. Our backend handles caching, rate limiting, plausibility checks on sensor data, and authentication.
 
 ### 3.2 Third-party data provider
 
-The iOS app does not talk to weather data providers directly. Our backend mediates with a third-party personal-weather-station data provider on your behalf. When you view a station, our backend may call that provider to retrieve current and recent observations for the station identifier you requested. The provider sees the station identifier and our backend's IP, not your device's IP or any identifier specific to you. We cache observations server-side to reduce the number of upstream calls.
+Our backend mediates with a third-party personal-weather-station data provider on your behalf. When you view a station, our backend may call that provider to retrieve current and recent observations for the station identifier you requested. The provider sees the station identifier and our backend's IP, not your device's IP or any identifier specific to you. We cache observations server-side to reduce the number of upstream calls.
 
-### 3.3 Apple App Attest
+### 3.3 Google Maps (Android only)
 
-To stop unauthorized clients from impersonating the app, StationCast uses Apple's App Attest service. On first launch, the app asks Apple to generate a hardware-backed key for this installation of the app. It exchanges a challenge with our backend and the corresponding attestation object is verified against Apple's certificate chain. Our backend stores the resulting public key and a key identifier so it can verify subsequent requests; the private key never leaves your device's Secure Enclave. Subsequent authenticated requests carry a signed assertion that our backend checks. App Attest is an Apple-operated service; please see Apple's privacy policy for what Apple does with the attestation data it processes.
+The Android app uses the Google Maps SDK to display station locations on a map. When you view a map screen, Google receives the map region you are viewing in order to serve map tiles. Google's handling of that data is governed by Google's privacy policy. The iOS app uses Apple's built-in MapKit instead, which is covered by Apple's privacy policy.
 
-### 3.4 Amazon Alexa (only if you enable the skill)
+### 3.4 Apple App Attest (iOS only)
+
+To stop unauthorized clients from impersonating the app, the iOS app uses Apple's App Attest service. On first launch, the app asks Apple to generate a hardware-backed key for this installation of the app. It exchanges a challenge with our backend and the corresponding attestation object is verified against Apple's certificate chain. Our backend stores the resulting public key and a key identifier so it can verify subsequent requests; the private key never leaves your device's Secure Enclave. Subsequent authenticated requests carry a signed assertion that our backend checks. App Attest is an Apple-operated service; please see Apple's privacy policy for what Apple does with the attestation data it processes.
+
+### 3.5 Amazon Alexa (only if you enable the skill)
 
 If you enable the StationCast Alexa skill and link your accounts, Amazon's Alexa service will send signed requests to our backend each time you ask Alexa about a StationCast station. Those requests include an Amazon-supplied user identifier and the spoken intent (for example, "what's the temperature at home"). We use those to look up the station(s) you've linked, fetch their observations through our backend, and return a spoken response. Amazon's handling of your voice data is governed by Amazon's privacy policy; we never receive raw audio. Hosting and account-linking server-side data lives in our backend; see [Section 7](#7-your-privacy-rights--choices) for how to unlink and request deletion.
 
@@ -100,27 +105,27 @@ StationCast does not display advertisements and we do not work with advertising 
 
 ## 5. Authentication and security
 
-We use standard transport security and Apple platform features to protect what's collected:
+We use standard transport security and platform features to protect what's collected:
 
 - **In transit**: all backend traffic uses HTTPS.
 - **On device**:
-  - Your saved-station list, station labels, and preferences are stored in iOS `UserDefaults` (the standard preferences store), including an App Group container shared with the home-screen widget.
-  - The App Attest key identifier — the only sensitive item — is stored in the iOS Keychain.
-  - The app's bundled backend API key is shipped inside the app binary, not provided by you, and is used as a fallback while App Attest is still setting up on a fresh install.
+  - Your saved-station list, station labels, and preferences are stored in the platform's standard preferences store (iOS `UserDefaults` with an App Group container shared with the home-screen widget; Android `SharedPreferences`).
+  - On iOS, the App Attest key identifier — the only sensitive item — is stored in the iOS Keychain.
+  - The app's bundled backend API key is shipped inside the app binary, not provided by you, and is used as a fallback while App Attest is still setting up on a fresh iOS install (and as the primary credential on Android).
 - **In the backend**: requests are authenticated with an App Attest assertion when possible, with an API key as fallback. Attested device public keys are stored server-side so we can verify your subsequent requests. Secrets used for signing Alexa OAuth tokens are kept out of logs.
 
 No system is perfectly secure. We cannot guarantee absolute protection against every possible attack.
 
 ## 6. Where information is stored
 
-- **On your device**: saved-station list, station labels, preferences, the App Attest key identifier, and the locally-cached observation that powers the widget. Deleting the app removes all of this.
+- **On your device**: saved-station list, station labels, preferences, the App Attest key identifier (iOS only), and the locally-cached observation that powers the widget (iOS). Deleting the app removes all of this.
 - **On our backend**: the App Attest device public key registered for your installation, transient cached observations for stations users have queried, server-side log lines as described in [Section 1.3](#13-information-collected-automatically), and (only if you've enabled the Alexa skill) the link records described in [Section 1.1](#11-information-you-provide). We do not currently run an automated time-based deletion process for log lines or registered device keys; if you want yours removed, see [Section 7](#7-your-privacy-rights--choices).
 
 ## 7. Your privacy rights & choices
 
 ### 7.1 Location permissions
 
-You can grant or revoke location access at any time in iOS Settings → StationCast → Location. If you deny location access, every feature continues to work except the location-dependent ones called out in [Section 1.2](#12-location-only-with-your-permission).
+You can grant or revoke location access at any time in iOS Settings → StationCast → Location (or Android Settings → Apps → StationCast → Permissions → Location). If you deny location access, every feature continues to work except the location-dependent ones called out in [Section 1.2](#12-location-only-with-your-permission).
 
 ### 7.2 Removing stations and resetting the app
 
