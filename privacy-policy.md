@@ -6,11 +6,11 @@ permalink: /privacy-policy.html
 
 # Privacy Policy
 
-<p class="page-meta">Last Updated: May 31, 2026</p>
+<p class="page-meta">Last Updated: June 30, 2026</p>
 
 ## Introduction
 
-StationCast ("we," "us," "our," or "the App") is a personal weather station companion. This Privacy Policy explains what information we handle when you use the StationCast iOS app, the iOS widget extension, the StationCast Android app, and the StationCast backend service that the apps talk to. It also covers the optional Amazon Alexa skill, when you choose to enable it.
+StationCast ("we," "us," "our," or "the App") is a personal weather station companion. This Privacy Policy explains what information we handle when you use the StationCast iOS app, the iOS widget extension, the Apple Watch app, the StationCast Android app, the StationCast web client at stationcast.app, and the StationCast backend service that the apps talk to. It also covers the optional Amazon Alexa skill, when you choose to enable it.
 
 By using StationCast, you agree to the practices described here.
 
@@ -31,6 +31,7 @@ StationCast is intended for users in the United States. The service is **not dir
 - **Siri and Shortcuts (iOS only, optional).** If you use Siri voice commands or Apple Shortcuts to ask about weather at your saved stations, the app processes your request using the same observation cache that powers the widget — no additional network call is made. Apple's handling of your voice data is governed by Apple's privacy policy; we never receive raw audio. You can revoke Siri access at any time in iOS Settings → StationCast → Siri & Search.
 - **Photos library, only when you ask.** If you tap "Save to Photos" on a share image, iOS prompts you for permission to add an image to your library. We never read your photo library.
 - **Amazon Alexa account linking (optional).** If you choose to enable the StationCast Alexa skill, the standard OAuth 2.0 account-linking flow runs against our backend. We store the link between your Amazon-side identifier and which StationCast station(s) you've linked to it, plus any nickname you assigned and which one (if any) is your default. We hash the Amazon-supplied user identifier before logging it so it does not appear in plain text in our logs. You can unlink the skill at any time from the Alexa app; see [Section 7](#7-your-privacy-rights--choices) for what happens to the server-side record.
+- **Web client sign-in (optional, browser only).** The StationCast web client at stationcast.app is a separate way to view your stations in a browser. To use it you sign in with Google (OAuth 2.0 / OpenID Connect), and access is limited to an allowlist of permitted email addresses. When you sign in, our web backend receives your Google account email address and Google's stable account identifier. We store your saved stations and display preferences server-side, keyed to that identifier, so your list persists across browser sessions, and we keep you logged in with a signed session cookie. We use your email only to authenticate you and gate access — not for marketing. The iOS, Android, and Apple Watch apps require no sign-in.
 
 ### 1.2 Location, only with your permission
 
@@ -51,7 +52,7 @@ When the app talks to our backend, the backend records server-side log lines con
 - HTTP method, path, URL query string, response status, and request duration.
 - Your IP address (the immediate peer IP, plus the forwarded chain if you reach us through a proxy or VPN).
 - The User-Agent string sent by the app.
-- The StationCast app version, build number, commit short hash, platform (`ios` or `android`), and device class (for example, `phone`, `pad`, `tablet`).
+- The StationCast app version, build number, commit short hash, platform (`ios`, `android`, or `web`), and device class (for example, `phone`, `pad`, `tablet`, `watch`, or `browser`).
 - A masked identifier for the credential the request was authenticated with (a prefix of the API key hash, or the App Attest key identifier — never the secret itself).
 - Whether App Attest verification passed.
 - The station identifier(s) the request asked about, when the request is for station data.
@@ -99,6 +100,10 @@ To stop unauthorized clients from impersonating the app, the iOS app uses Apple'
 
 If you enable the StationCast Alexa skill and link your accounts, Amazon's Alexa service will send signed requests to our backend each time you ask Alexa about a StationCast station. Those requests include an Amazon-supplied user identifier and the spoken intent (for example, "what's the temperature at home"). We use those to look up the station(s) you've linked, fetch their observations through our backend, and return a spoken response. Amazon's handling of your voice data is governed by Amazon's privacy policy; we never receive raw audio. Hosting and account-linking server-side data lives in our backend; see [Section 7](#7-your-privacy-rights--choices) for how to unlink and request deletion.
 
+### 3.6 Google Sign-In (web client only)
+
+The StationCast web client uses Google's OAuth 2.0 / OpenID Connect service to sign you in. When you choose "Sign in with Google," Google authenticates you and returns your email address and a stable account identifier to our web backend, which verifies Google's token itself. Google's handling of your account data is governed by Google's privacy policy. The iOS, Android, and Apple Watch apps do not use Google Sign-In.
+
 ## 4. Advertising
 
 StationCast does not display advertisements and we do not work with advertising networks. If that changes, this policy will be updated with full details before any ads are shown.
@@ -120,6 +125,7 @@ No system is perfectly secure. We cannot guarantee absolute protection against e
 
 - **On your device**: saved-station list, station labels, preferences, the App Attest key identifier (iOS only), and the locally-cached observation that powers the widget (iOS). Deleting the app removes all of this.
 - **On our backend**: the App Attest device public key registered for your installation, transient cached observations for stations users have queried, server-side log lines as described in [Section 1.3](#13-information-collected-automatically), and (only if you've enabled the Alexa skill) the link records described in [Section 1.1](#11-information-you-provide). We do not currently run an automated time-based deletion process for log lines or registered device keys; if you want yours removed, see [Section 7](#7-your-privacy-rights--choices).
+- **On our web backend** (only if you use the web client): your Google account identifier and email address, and the saved stations and display preferences associated with your account, stored in a server-side database so your list persists between browser sessions. If you want this removed, see [Section 7](#7-your-privacy-rights--choices).
 
 ## 7. Your privacy rights & choices
 
@@ -140,6 +146,10 @@ In the Amazon Alexa app, go to Skills & Games → Your Skills → StationCast �
 ### 7.4 App Attest device key
 
 If you want the App Attest device record we hold for your installation removed from our backend, email us per [Section 10](#10-contact-us). Removing it means your installation will re-attest on the next request.
+
+### 7.5 Web client account data
+
+To sign out of the web client, use the sign-out control in the browser. To have the server-side record for your web account — your Google account identifier, email address, saved stations, and display preferences — removed from our backend, email us per [Section 10](#10-contact-us). We do not currently provide a self-serve deletion tool for that record.
 
 ## 8. Children's privacy
 
