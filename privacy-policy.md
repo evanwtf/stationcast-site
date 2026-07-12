@@ -6,7 +6,7 @@ permalink: /privacy-policy.html
 
 # Privacy Policy
 
-<p class="page-meta">Last Updated: June 30, 2026</p>
+<p class="page-meta">Last Updated: July 12, 2026</p>
 
 ## Introduction
 
@@ -94,7 +94,7 @@ The Android app uses the Google Maps SDK to display station locations on a map. 
 
 ### 3.4 Apple App Attest (iOS only)
 
-To stop unauthorized clients from impersonating the app, the iOS app uses Apple's App Attest service. On first launch, the app asks Apple to generate a hardware-backed key for this installation of the app. It exchanges a challenge with our backend and the corresponding attestation object is verified against Apple's certificate chain. Our backend stores the resulting public key and a key identifier so it can verify subsequent requests; the private key never leaves your device's Secure Enclave. Subsequent authenticated requests carry a signed assertion that our backend checks. App Attest is an Apple-operated service; please see Apple's privacy policy for what Apple does with the attestation data it processes.
+To stop unauthorized clients from impersonating the app, the iOS app uses Apple's App Attest service. On first launch, the app asks Apple to generate a hardware-backed key for this installation of the app. It exchanges a challenge with our backend and the corresponding attestation object is verified against Apple's certificate chain. Our backend stores the resulting public key, a key identifier, the attestation receipt Apple issued, and a signature counter so it can verify subsequent requests and reject replayed assertions; the private key never leaves your device's Secure Enclave. Subsequent authenticated requests carry a signed assertion that our backend checks. App Attest is an Apple-operated service; please see Apple's privacy policy for what Apple does with the attestation data it processes.
 
 ### 3.5 Amazon Alexa (only if you enable the skill)
 
@@ -124,7 +124,7 @@ No system is perfectly secure. We cannot guarantee absolute protection against e
 ## 6. Where information is stored
 
 - **On your device**: saved-station list, station labels, preferences, the App Attest key identifier (iOS only), and the locally-cached observation that powers the widget (iOS). Deleting the app removes all of this.
-- **On our backend**: the App Attest device public key registered for your installation, transient cached observations for stations users have queried, server-side log lines as described in [Section 1.3](#13-information-collected-automatically), and (only if you've enabled the Alexa skill) the link records described in [Section 1.1](#11-information-you-provide). We do not currently run an automated time-based deletion process for log lines or registered device keys; if you want yours removed, see [Section 7](#7-your-privacy-rights--choices).
+- **On our backend**: the App Attest device record registered for your installation (its public key, key identifier, Apple-issued attestation receipt, and signature counter), transient cached observations for stations users have queried, server-side log lines as described in [Section 1.3](#13-information-collected-automatically), and (only if you've enabled the Alexa skill) the link records described in [Section 1.1](#11-information-you-provide). We do not currently run an automated time-based deletion process for log lines or registered device keys; if you want yours removed, see [Section 7](#7-your-privacy-rights--choices).
 - **On our web backend** (only if you use the web client): your Google account identifier and email address, and the saved stations and display preferences associated with your account, stored in a server-side database so your list persists between browser sessions. If you want this removed, see [Section 7](#7-your-privacy-rights--choices).
 
 ## 7. Your privacy rights & choices
@@ -141,7 +141,7 @@ You can grant or revoke location access at any time in iOS Settings → StationC
 
 ### 7.3 Unlinking the Alexa skill
 
-In the Amazon Alexa app, go to Skills & Games → Your Skills → StationCast → Disable Skill. That disables the skill on your Amazon account. To also have the server-side link record (Amazon user hash, linked station identifiers, nickname) removed from our backend, email us per [Section 10](#10-contact-us) — we do not currently provide a self-serve deletion tool for that record.
+In the Amazon Alexa app, go to Skills & Games → Your Skills → StationCast → Disable Skill. That disables the skill on your Amazon account. To also have the server-side link record (your Amazon-supplied user identifier, linked station identifiers, and nickname) removed from our backend, email us per [Section 10](#10-contact-us) — we do not currently provide a self-serve deletion tool for that record.
 
 ### 7.4 App Attest device key
 
