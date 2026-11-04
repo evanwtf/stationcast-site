@@ -1,0 +1,15 @@
+[
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls",
+      "delegate_permission/common.get_login_creds"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "app.stationcast.android",
+      "sha256_cert_fingerprints": [
+        "0B:8D:C3:34:C2:67:95:CF:6B:1E:A5:95:53:66:30:76:E2:13:8D:2F:5F:51:75:B0:6D:C9:4C:73:4C:5C:82:C5"
+      ]
+    }
+  }
+]
